@@ -16,6 +16,6 @@ before_deploy:
 
 deploy:
   provider: script
-  script: scho "WIP"
+  script: echo "WIP"
   on:
     all_branches: true
