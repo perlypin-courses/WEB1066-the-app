@@ -1,10 +1,72 @@
-language: python
-install: "pip install -r requirements.txt"
+language: java
+jdk: openjdk8
 
 script:
-  # Run ANSIBLE checks
-  # - ANSIBLE0008: Disabled for use of sudo warnings - to address
-  # - ANSIBLE0011: Disabled for all tasks which should be named
-  # - ANSIBLE0012: Disabled (should not change if nothings needs doing) - to address
-  # - ANSIBLE0013: Disabled - few uses of shell commands - to address
-  - find vagrant/provision -name "*.yml" -exec ansible-lint -x ANSIBLE008,ANSIBLE0011,ANSIBLE0012,ANSIBLE0013  {} +
+  - ./gradlew clean jar
+
+after_success:
+  - find . -name jacocoTestReport.csv|xargs cat|awk -F',' '{print $3" "$4" "$5}'
+
+stages:
+  - test
+  - deploy
+
+jobs:
+  include:
+    - stage: test
+      name: "UI check"
+      install: skip
+      script:
+      - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/ui check
+      env:
+      - COVERAGE_THRESHOLD=0.05
+    - stage: test
+      name: "Cart Service check"
+      install: skip
+      script:
+      - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/service/cart check
+      env:
+      - COVERAGE_THRESHOLD=0.14
+    - stage: test
+      name: "User Service check"
+      install: skip
+      script:
+      - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/service/user check
+      env:
+      - COVERAGE_THRESHOLD=0.0
+    - stage: test
+      name: "Order repository check"
+      install: skip
+      script:
+      - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/repository/order check
+      env:
+      - COVERAGE_THRESHOLD=0.3
+    - stage: test
+      name: "Cart repository check"
+      install: skip
+      script:
+      - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/repository/cart check
+      env:
+      - COVERAGE_THRESHOLD=0.0
+    - stage: test
+      name: "Product repository check"
+      install: skip
+      script:
+      - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/repository/product check
+      env:
+      - COVERAGE_THRESHOLD=0.12
+    - stage: test
+      name: "User repository check"
+      install: skip
+      script:
+      - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/repository/user check
+      env:
+      - COVERAGE_THRESHOLD=0.3
+    - stage: deploy
+      name: "Deploy"
+      script: skip
+      deploy:
+        provider: script
+        script: echo "WIP"
+        on:
+          all_branches: true
