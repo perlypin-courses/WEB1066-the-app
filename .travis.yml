@@ -15,4 +15,7 @@ before_deploy:
   - ./gradlew test jacocoTestCoverageVerification
 
 deploy:
-  - echo "WIP"
+  provider: script
+  script: scho "WIP"
+  on:
+    all_branches: true
