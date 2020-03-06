@@ -40,7 +40,7 @@ jobs:
       script:
       - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/repository/order check
       env:
-      - COVERAGE_THRESHOLD=0.5
+      - COVERAGE_THRESHOLD=0.3
     - stage: test
       name: "Cart repository check"
       install: skip
@@ -61,7 +61,7 @@ jobs:
       script:
       - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/repository/user check
       env:
-      - COVERAGE_THRESHOLD=0.5
+      - COVERAGE_THRESHOLD=0.3
     - stage: deploy
       name: "Deploy"
       script: skip
