@@ -17,9 +17,7 @@ jobs:
   include:
     - stage: test
       name: "UI check"
-      jdk:
-        - openjdk8
-        - openjdk9
+      jdk: openjdk8
       install: skip
       script:
       - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/ui check
@@ -27,9 +25,7 @@ jobs:
       - COVERAGE_THRESHOLD=0.05
     - stage: test
       name: "Cart Service check"
-      jdk:
-        - openjdk8
-        - openjdk9
+      jdk: openjdk8
       install: skip
       script:
       - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/service/cart check
@@ -37,9 +33,7 @@ jobs:
       - COVERAGE_THRESHOLD=0.14
     - stage: test
       name: "User Service check"
-      jdk:
-        - openjdk8
-        - openjdk9
+      jdk: openjdk8
       install: skip
       script:
       - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/service/user check
@@ -47,9 +41,7 @@ jobs:
       - COVERAGE_THRESHOLD=0.0
     - stage: test
       name: "Order repository check"
-      jdk:
-        - openjdk8
-        - openjdk9
+      jdk: openjdk8
       install: skip
       script:
       - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/repository/order check
@@ -57,9 +49,7 @@ jobs:
       - COVERAGE_THRESHOLD=0.3
     - stage: test
       name: "Cart repository check"
-      jdk:
-        - openjdk8
-        - openjdk9
+      jdk: openjdk8
       install: skip
       script:
       - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/repository/cart check
@@ -67,9 +57,7 @@ jobs:
       - COVERAGE_THRESHOLD=0.0
     - stage: test
       name: "Product repository check"
-      jdk:
-        - openjdk8
-        - openjdk9
+      jdk: openjdk8
       install: skip
       script:
       - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/repository/product check
@@ -77,9 +65,63 @@ jobs:
       - COVERAGE_THRESHOLD=0.12
     - stage: test
       name: "User repository check"
-      jdk:
-        - openjdk8
-        - openjdk9
+      jdk: openjdk8
+      install: skip
+      script:
+      - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/repository/user check
+      env:
+      - COVERAGE_THRESHOLD=0.3
+    - stage: test
+      name: "UI check"
+      jdk: openjdk9
+      install: skip
+      script:
+      - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/ui check
+      env:
+      - COVERAGE_THRESHOLD=0.05
+    - stage: test
+      name: "Cart Service check"
+      jdk: openjdk9
+      install: skip
+      script:
+      - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/service/cart check
+      env:
+      - COVERAGE_THRESHOLD=0.14
+    - stage: test
+      name: "User Service check"
+      jdk: openjdk9
+      install: skip
+      script:
+      - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/service/user check
+      env:
+      - COVERAGE_THRESHOLD=0.0
+    - stage: test
+      name: "Order repository check"
+      jdk: openjdk9
+      install: skip
+      script:
+      - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/repository/order check
+      env:
+      - COVERAGE_THRESHOLD=0.3
+    - stage: test
+      name: "Cart repository check"
+      jdk: openjdk9
+      install: skip
+      script:
+      - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/repository/cart check
+      env:
+      - COVERAGE_THRESHOLD=0.0
+    - stage: test
+      name: "Product repository check"
+      jdk: openjdk9
+      install: skip
+      script:
+      - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/repository/product check
+      env:
+      - COVERAGE_THRESHOLD=0.12
+    - stage: test
+      name: "User repository check"
+      jdk: openjdk9
       install: skip
       script:
       - COVERAGE=$COVERAGE_THRESHOLD ./gradlew -p ./monolithic/repository/user check
