@@ -16,7 +16,7 @@ stages:
 jobs:
   include:
     - stage: test
-      name: "UI check"
+      name: "UI check - JDK8"
       jdk: openjdk8
       install: skip
       script:
@@ -24,7 +24,7 @@ jobs:
       env:
       - COVERAGE_THRESHOLD=0.05
     - stage: test
-      name: "Cart Service check"
+      name: "Cart Service check - JDK8"
       jdk: openjdk8
       install: skip
       script:
@@ -32,7 +32,7 @@ jobs:
       env:
       - COVERAGE_THRESHOLD=0.14
     - stage: test
-      name: "User Service check"
+      name: "User Service check - JDK8"
       jdk: openjdk8
       install: skip
       script:
@@ -40,7 +40,7 @@ jobs:
       env:
       - COVERAGE_THRESHOLD=0.0
     - stage: test
-      name: "Order repository check"
+      name: "Order repository check - JDK8"
       jdk: openjdk8
       install: skip
       script:
@@ -48,7 +48,7 @@ jobs:
       env:
       - COVERAGE_THRESHOLD=0.3
     - stage: test
-      name: "Cart repository check"
+      name: "Cart repository check - JDK8"
       jdk: openjdk8
       install: skip
       script:
@@ -56,7 +56,7 @@ jobs:
       env:
       - COVERAGE_THRESHOLD=0.0
     - stage: test
-      name: "Product repository check"
+      name: "Product repository check - JDK8"
       jdk: openjdk8
       install: skip
       script:
@@ -64,7 +64,7 @@ jobs:
       env:
       - COVERAGE_THRESHOLD=0.12
     - stage: test
-      name: "User repository check"
+      name: "User repository check - JDK8"
       jdk: openjdk8
       install: skip
       script:
@@ -72,7 +72,7 @@ jobs:
       env:
       - COVERAGE_THRESHOLD=0.3
     - stage: test
-      name: "UI check"
+      name: "UI check - JDK9"
       jdk: openjdk9
       install: skip
       script:
@@ -80,7 +80,7 @@ jobs:
       env:
       - COVERAGE_THRESHOLD=0.05
     - stage: test
-      name: "Cart Service check"
+      name: "Cart Service check - JDK9"
       jdk: openjdk9
       install: skip
       script:
@@ -88,7 +88,7 @@ jobs:
       env:
       - COVERAGE_THRESHOLD=0.14
     - stage: test
-      name: "User Service check"
+      name: "User Service check - JDK9"
       jdk: openjdk9
       install: skip
       script:
@@ -96,7 +96,7 @@ jobs:
       env:
       - COVERAGE_THRESHOLD=0.0
     - stage: test
-      name: "Order repository check"
+      name: "Order repository check - JDK9"
       jdk: openjdk9
       install: skip
       script:
@@ -104,7 +104,7 @@ jobs:
       env:
       - COVERAGE_THRESHOLD=0.3
     - stage: test
-      name: "Cart repository check"
+      name: "Cart repository check - JDK9"
       jdk: openjdk9
       install: skip
       script:
@@ -112,7 +112,7 @@ jobs:
       env:
       - COVERAGE_THRESHOLD=0.0
     - stage: test
-      name: "Product repository check"
+      name: "Product repository check - JDK9"
       jdk: openjdk9
       install: skip
       script:
@@ -120,7 +120,7 @@ jobs:
       env:
       - COVERAGE_THRESHOLD=0.12
     - stage: test
-      name: "User repository check"
+      name: "User repository check - JDK9"
       jdk: openjdk9
       install: skip
       script:
